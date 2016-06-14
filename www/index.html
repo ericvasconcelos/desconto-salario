@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="utf-8">
+	<title>Desconto Salário</title>
+	<link rel="stylesheet" href="icons/material.css">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+	<nav class="row green darken-1 white-text">
+    <div class="nav-wrapper col s12">
+      <a href="#" class="brand-logo">Desconto Salário</a>
+      
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="#" onclick="callIndex()"><i class="material-icons">payment</i>Salário Líquido</a></li>
+        <li><a href="#" onclick="callRegistros()"><i class="material-icons">view_list</i>Registros</a></li>
+        <li><a href="#"><i class="material-icons">trending_up</i>CLT x PJ</a></li>
+        <li><a href="#"><i class="material-icons">settings</i>Configurações</a></li>
+      </ul>
+
+      <!-- <i class="material-icons waves-effect waves-light
+        waves-circle dropdown-button right"
+        data-activates="submenu" data-gutter="5"
+        data-constrainwidth="false">
+        more_vert</i>
+
+      <ul id="submenu" class="dropdown-content">
+        <li><a class="black-text acao-limpar">Limpar</a></li>
+      </ul> -->
+    </div>
+  </nav>
+	
+	<div class="row">
+    <form class="col s12">
+    	<div class="row">
+        <div class="input-field col s12">
+          <input id="name" type="text" class="validate">
+          <label for="name">Nome</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="wage" type="text" class="validate  currency">
+          <label for="wage">Salário</label>
+        </div>
+      </div>
+
+      <div class="row">
+      	<div class="col s12">
+      		<label for="children">Quantidade de dependentes</label>
+        </div>
+        <div class="input-field col s12">
+          <select id="children" class="browser-default">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="pension" type="text" class="validate currency">
+          <label for="pension">Pensão alimentícia</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="others-discounts" type="text" class="validate currency">
+          <label for="others-discounts">Outros descontos</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="vt" type="text" class="validate currency">
+          <label for="vt">Desconto do Vale Transporte</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="vr" type="text" class="validate currency">
+          <label for="vr">Desconto do Vale Refeição</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="va" type="text" class="validate currency">
+          <label for="va">Desconto do Vale Alimentação</label>
+        </div>
+      </div>
+			
+			<div class="row">
+        <div class="col s12">
+          <a id="save" class="waves-effect waves-light btn right">Gravar<i class="material-icons right">done</i></a>
+        </div>
+			</div>
+
+		</form>
+  </div>
+
+	<div id="confirmacao" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h5>Resumo do pedido</h5>
+			<input id="numero-mesa" type="number" class="validate" placeholder="Número da mesa">
+			<blockquote id="resumo"></blockquote>
+		</div>
+		<div class="modal-footer">
+			<button class="btn deep-orange waves-effect waves-light modal-close">
+				Pedir
+			</button>
+			<button class="btn-flat waves-effect waves-red modal-close acao-limpar">
+				Cancelar
+			</button>
+		</div>
+	</div>
+
+	<footer class="footer-fixo green darken-1 white-text row">
+		<div class="col s12">
+			<h5>Salário Líquido: <span id="liquid-wage">R$ 0,00</span></h5>
+      <p>INSS: <span id="discount-inss">R$ 0,00</span> | IR: <span id="discount-ir">R$ 0,00</span></p>
+  	</div>
+	</footer>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.price_format.2.0.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/app.js"></script>
+</body>
+</html>
