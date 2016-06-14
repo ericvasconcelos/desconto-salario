@@ -3,13 +3,23 @@ $('.modal-trigger').leanModal();
 
 $(".button-collapse").sideNav();
 
+$('ul.tabs').tabs();
+
 
 function callIndex() {
 	window.location = 'index.html';
 }
 
-function callRegistros() {
-	window.location = 'registros.html';
+function callRegisters() {
+	window.location = 'registers.html';
+}
+
+function callCLTversusPJ() {
+	window.location = 'clt-versus-pj.html';
+}
+
+function callSettings() {
+	window.location = 'settings.html';
 }
 
 var inssDiscount = 0,
@@ -198,29 +208,28 @@ $('#save').on('click', function() {
 		storage.setItem('registros', JSON.stringify({"list": [newRegistro]}));
 	}
 
-	console.log(JSON.parse(storage.getItem('registros')))
+	Materialize.toast('Salário gravado!', 3000) 
 });
-
-
-
 
 var lista = JSON.parse(storage.getItem('registros'));
 var listaCompleta = '';
 
-lista.list.map(function(item) {
-	// <td>' + item.name + '</td>\
-	listaCompleta += '<tr>\
-    <td>' + item.liquidSalary + '</td>\
-    <td>' + item.inssDiscount + '</td>\
-    <td>' + item.irDiscount + '</td>\
-  </tr>'
-})
+if (lista) {
+	lista.list.map(function(item) {
+		listaCompleta += '<tr>\
+			<td>' + item.name + '</td>\
+	    <td>' + item.liquidSalary + '</td>\
+	    <td>' + item.inssDiscount + '</td>\
+	    <td>' + item.irDiscount + '</td>\
+	  </tr>'
+	});
+}
 
 $("#list").html(listaCompleta);
 
-
 $('.acao-limpar').on('click', function () {
 	$('#list').html('');
+	storage.removeItem('registros');
 });
 
 

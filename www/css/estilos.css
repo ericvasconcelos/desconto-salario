@@ -2,19 +2,12 @@
 nav .brand-logo {
    font-size: 1.3rem; 
 }
-
 /* estilo do titulo */
 .titulo {
     font-size: 1.3rem;
     margin-left: 5%;
     margin-right: auto;
 }
-
-/* cor da aba */
-.tabs .indicator {
-    background-color: white;
-}
-
 /* fixo no topo */
 .topo-fixo {
     position: fixed;
@@ -38,7 +31,6 @@ nav .nav-wrapper i {
     display: block;
     text-align: center;
 }
-
 .side-nav i {
     width: 2rem;
     font-size: 1.8rem;
@@ -48,4 +40,12 @@ nav .nav-wrapper i {
     text-align: center;
     margin-right: 0.5em;
 }
-    
+
+/* tabs */
+.tabs {
+    clear: both;
+}
+/* cor da aba */
+.tabs .indicator {
+    background-color: white;
+}

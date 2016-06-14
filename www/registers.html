@@ -16,32 +16,34 @@
 
       <a href="#" class="brand-logo">Desconto Salário</a>
 
-      <i class="material-icons waves-effect waves-light
-        waves-circle dropdown-button right"
-        data-activates="submenu" data-gutter="5"
-        data-constrainwidth="false">
-        more_vert</i>
+      <i class="material-icons waves-effect waves-light waves-circle dropdown-button right" data-activates="submenu" data-gutter="5" data-constrainwidth="false">more_vert</i>
 
       <ul id="submenu" class="dropdown-content">
         <li><a class="black-text acao-limpar">Limpar</a></li>
       </ul>
     </div>
+
+    <ul class="tabs green darken-1">
+      <li class="tab col s6 active"><a class="white-text" href="#liquidsalary">Test 1</a></li>
+      <li class="tab col s6"><a class="white-text" href="#cltversuspj">Test 4</a></li>
+    </ul>
   </nav>
 
   <ul class="side-nav" id="mobile-demo">
     <li><a href="#" onclick="callIndex()"><i class="material-icons">payment</i>Salário Líquido</a></li>
-    <li><a href="#" onclick="callRegistros()"><i class="material-icons">view_list</i>Registros</a></li>
+    <li><a href="#" onclick="callRegisters()"><i class="material-icons">view_list</i>Registros</a></li>
     <li><a href="#"><i class="material-icons">trending_up</i>CLT x PJ</a></li>
     <li><a href="#"><i class="material-icons">settings</i>Configurações</a></li>
   </ul>
   
   <div class="row">
     <div class="col s12">
-      <table class="striped bordered">
+      <div id="liquidsalary" class="col s12">
+        <table class="striped">
         <thead>
           <tr>
-              <!-- <th data-field="name">Name</th> -->
-              <th data-field="liquid-salary">Salário Líquido</th>
+              <th data-field="name">Name</th>
+              <th data-field="liquid-salary">Salário <br>Líquido</th>
               <th data-field="inss">INSS</th>
               <th data-field="irrf">IRRF</th>
           </tr>
@@ -51,9 +53,15 @@
           
         </tbody>
       </table>
+
+      </div>
+
+      <div id="cltversuspj" class="col s12">
+        <h1>CLT versus PJ</h1>
+      </div>
+
     </div>
   </div>
-
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery.price_format.2.0.min.js"></script>
