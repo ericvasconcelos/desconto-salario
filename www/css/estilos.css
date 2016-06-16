@@ -57,3 +57,22 @@ hr {
 .tabs .indicator {
     background-color: white;
 }
+
+#liquidsalary .liquidsalary-item {
+    display: none;
+    
+}
+.liquidsalary-item-valign {
+    min-height: 70vh;
+}
+.btn-more {
+    width: 20px;
+    height: 20px;
+    background-color: #00897b;
+    border-radius: 50%;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+}
+
+

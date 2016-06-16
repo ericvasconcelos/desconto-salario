@@ -1,27 +1,3 @@
-
-$('.modal-trigger').leanModal();
-
-$(".button-collapse").sideNav();
-
-$('ul.tabs').tabs();
-
-
-function callIndex() {
-	window.location = 'index.html';
-}
-
-function callRegisters() {
-	window.location = 'registers.html';
-}
-
-function callCLTversusPJ() {
-	window.location = 'clt-versus-pj.html';
-}
-
-function callSettings() {
-	window.location = 'settings.html';
-}
-
 var inssDiscount = 0,
 	childrenDiscount = 0,
 	grossSalary,
@@ -42,9 +18,7 @@ $('.currency').priceFormat({
 	thousandsSeparator: '.',
 	limit: 7,
 	centsLimit: 2
-});
-
-$('.currency').trigger('keyup');
+}).trigger('keyup');
 
 function currencyToNumber(number) {
 	return Number(number.replace('R$ ', '').replace('.', '').replace(',', '.'));
@@ -64,7 +38,6 @@ function numberToCurrency(currency) {
 	}
 
 	return 'R$ ' + real + ',' + cents;
-
 }
 
 function calcINSS(grossSalary) {
@@ -135,6 +108,19 @@ function calcFinalSalary() {
 	$('#discount-ir').text(numberToCurrency(irDiscount));
 }
 
+
+function validateInputs() {
+	if ($('#name').val().length < 3) {
+		Materialize.toast('Opa! Preencha o seu nome ;)', 2000, '', $('#name').focus()); 
+		return false;
+	} else if (currencyToNumber($("#wage").val()) < 100) {
+		Materialize.toast('Opa! Preencha o seu salário ;)', 2000, '', $('#wage').focus()); 
+		return false;
+	} else {
+		return true;
+	}
+}
+
 // Salário Bruto!
 $('#wage').on('keyup', function() {
 	grossSalary = currencyToNumber($(this).val());
@@ -176,117 +162,48 @@ $('.currency').on('keyup', function() {
 	calcFinalSalary();
 });
 
-var storage = window.localStorage;
-
 $('#save').on('click', function() {
-	var data = new Date();
-  var dia = data.getDate();
-  if (dia.toString().length == 1)
-    dia = "0" + dia;
-  var mes = data.getMonth()+1;
-  if (mes.toString().length == 1)
-    mes = "0" + mes;
-  var ano = data.getFullYear();  
-  var date =  dia + "/" + mes + "/" + ano;
+
+	if (validateInputs()) {
+		var data = new Date();
+	  var dia = data.getDate();
+	  if (dia.toString().length == 1)
+	    dia = "0" + dia;
+	  var mes = data.getMonth()+1;
+	  if (mes.toString().length == 1)
+	    mes = "0" + mes;
+	  var ano = data.getFullYear();  
+	  var date =  dia + "/" + mes + "/" + ano;
 
 
-	var newRegistro = {
-		name: $('#name').val(),
-		grossSalary: $('#wage').val(),
-		liquidSalary: $('#liquid-wage').text(),
-		inssDiscount: $('#discount-inss').text(),
-		irDiscount: $('#discount-ir').text(),
-		children: $('#children').val(),
-		pension: $('#pension').val(),
-		othersDiscounts: $('#others-discounts').val(),
-		vt: $('#vt').val(),
-		vr: $('#vr').val(),
-		va: $('#va').val(),
-		date: date
-	}
+		var newRegistro = {
+			name: $('#name').val(),
+			grossSalary: $('#wage').val(),
+			liquidSalary: $('#liquid-wage').text(),
+			inssDiscount: $('#discount-inss').text(),
+			irDiscount: $('#discount-ir').text(),
+			children: $('#children').val(),
+			pension: $('#pension').val(),
+			othersDiscounts: $('#others-discounts').val(),
+			vt: $('#vt').val(),
+			vr: $('#vr').val(),
+			va: $('#va').val(),
+			date: date
+		}
 
-	var registros = storage.getItem('registros');
+		var registros = storage.getItem('registros');
 
-	if (registros) {
-		var oldRegistros = JSON.parse(registros);
-		oldRegistros.list.unshift(newRegistro);
-		storage.setItem('registros', JSON.stringify(oldRegistros));
+		if (registros) {
+			var oldRegistros = JSON.parse(registros);
+			oldRegistros.list.unshift(newRegistro);
+			storage.setItem('registros', JSON.stringify(oldRegistros));
+		} else {
+			storage.setItem('registros', JSON.stringify({"list": [newRegistro]}));
+		}
+
+		Materialize.toast('Salário gravado!', 3000, '', callIndex); 
+		
 	} else {
-		storage.setItem('registros', JSON.stringify({"list": [newRegistro]}));
+		return false;
 	}
-
-	Materialize.toast('Salário gravado!', 3000, '', callRegisters); 
 });
-
-var lista = JSON.parse(storage.getItem('registros'));
-var listaCompleta = '';
-
-if (lista) {
-	lista.list.map(function(item) {
-		listaCompleta += '<tr>\
-			<td>' + item.name + '</td>\
-			<td>' + item.grossSalary + '</td>\
-	    <td>' + item.liquidSalary + '</td>\
-	    <td>' + item.inssDiscount + '</td>\
-	    <td>' + item.irDiscount + '</td>\
-	    <td>' + item.children + '</td>\
-	    <td>' + item.pension + '</td>\
-	    <td>' + item.othersDiscounts + '</td>\
-	    <td>' + item.vt + '</td>\
-	    <td>' + item.vr + '</td>\
-	    <td>' + item.va + '</td>\
-	    <td>' + item.date + '</td>\
-	  </tr>'
-	});
-}
-
-$("#list").html(listaCompleta);
-
-$('.acao-limpar').on('click', function () {
-	$('#list').fadeOut(300, function() {
-		$(this).html('');
-		storage.removeItem('registros');
-	});
-});
-
-
-
-
-// Calculo do CLT
-// Salario Bruto
-	// INSS
-		// dependentes
-		// pensao
-		// outros descontos
-	// IR
-// FGTS
-// Benefícios
-	// Férias
-	// 13 salário
-	// Participação nos Lucros 
-	// VT - descontos
-	// VR - descontos
-	// VA - descontos
-	// Previdência privada
-	// Plano de saúde
-	// Educação
-	// Outros Benefícios
-
-
-
-// Calculo PJ
-	// IRPJ
-	// Cofins
-	// PIS
-	// ISS
-	// Simples / DAS
-	// GPS 11% sm + 2,0% fat
-	// Contador
-
-
-
-
-
-
-
-

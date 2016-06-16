@@ -1,139 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="utf-8">
-	<title>Desconto Salário</title>
-	<link rel="stylesheet" href="icons/material.css">
-	<link rel="stylesheet" href="css/materialize.min.css">
-	<link rel="stylesheet" href="css/estilos.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Desconto Salário</title>
+  <link rel="stylesheet" href="icons/material.css">
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 
-	<nav class="row green darken-1 white-text">
+  <ul class="side-nav" id="mobile-demo">
+    <li><a href="#" onclick="callIndex()"><i class="material-icons">view_list</i>Registros</a></li>
+    <li><a href="#" onclick="callLiquidSalary()"><i class="material-icons">payment</i>Salário Líquido</a></li>
+    <li><a href="#" onclick="callCLTversusPJ()"><i class="material-icons">trending_up</i>CLT x PJ</a></li>
+    <hr>
+    <li><a href="#" onclick="callSettings()"><i class="material-icons">settings</i>Configurações</a></li>
+    <li><a href="#" onclick="callAbout()"><i class="material-icons">info_outline</i>Sobre o App</a></li>
+  </ul>
+
+  <nav class="row teal darken-1 white-text">
     <div class="nav-wrapper col s12">
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
       <a href="#" class="brand-logo">Desconto Salário</a>
+
+      <i class="material-icons waves-effect waves-light waves-circle dropdown-button right" data-activates="submenu" data-gutter="5" data-constrainwidth="false">more_vert</i>
+
+      <ul id="submenu" class="dropdown-content">
+        <li><a class="black-text acao-limpar">Limpar</a></li>
+      </ul>
     </div>
+
+    <ul class="tabs teal darken-1">
+      <li class="tab col s6"><a class="white-text" href="#liquidsalary">Salário Líquido</a></li>
+      <li class="tab col s6"><a class="white-text" href="#cltversuspj">CLT vs PJ</a></li>
+    </ul>
   </nav>
+  
+  <div class="row">
+    <div class="col s12">
+      <div id="liquidsalary" class="col s12">
+        <table id="liquidsalary-table" class="responsive-table striped liquidsalary-item">
+          <thead>
+            <tr>
+              <th data-field="name">Nome</th>
+              <th data-field="wage">Bruto</th>
+              <th data-field="liquid-salary">Líquido</th>
+              <th data-field="inss">INSS</th>
+              <th data-field="irrf">IRRF</th>
+              <th data-field="children">Dependentes</th>
+              <th data-field="pension">Pensão</th>
+              <th data-field="other-discounts">descontos</th>
+              <th data-field="vt">VT</th>
+              <th data-field="vr">VR</th>
+              <th data-field="va">VA</th>
+              <th data-field="date">Data</th>
+            </tr>
+          </thead>
 
-  <ul class="side-nav" id="mobile-demo">
-    <li><a href="#" onclick="callIndex()"><i class="material-icons">payment</i>Salário Líquido</a></li>
-    <li><a href="#" onclick="callRegisters()"><i class="material-icons">view_list</i>Registros</a></li>
-    <li><a href="#" onclick="callCLTversusPJ()"><i class="material-icons">trending_up</i>CLT x PJ</a></li>
-    <hr>
-    <li><a href="#"><i class="material-icons">settings</i>Configurações</a></li>
-    <li><a href="#"><i class="material-icons">info_outline</i>Sobre o App</a></li>
-  </ul>
-	
-	<div class="row">
-    <form class="col s12">
-    	<div class="row">
-        <div class="input-field col s12">
-          <input id="name" type="text" class="validate">
-          <label for="name">Primeiro Nome</label>
+          <tbody id="list">
+            
+          </tbody>
+        </table>
+
+        <div id="empty-data" class="liquidsalary-item col s10 offset-s1">
+          <div class="liquidsalary-item-valign valign-wrapper">
+            <div class="valign center-align center">
+              <i class="material-icons large teal-text text-darken-1">play_circle_outline</i>
+              <h5>Calcule os descontos do seu salário agora</h5>
+              <p>Aperte o botão <i class="btn-more material-icons tiny">add</i> abaixo e comece! =)</p>
+            </div>
+          </div>
+          
         </div>
       </div>
 
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="wage" type="text" class="validate currency">
-          <label for="wage">Salário</label>
-        </div>
+      <div id="cltversuspj" class="col s12">
+        <h5>CLT x PJ em breve</h5>
       </div>
 
-      <div class="row">
-      	<div class="col s12">
-      		<label for="children">Quantidade de dependentes</label>
-        </div>
-        <div class="input-field col s12">
-          <select id="children" class="browser-default">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="pension" type="text" class="validate currency">
-          <label for="pension">Pensão alimentícia</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="others-discounts" type="text" class="validate currency">
-          <label for="others-discounts">Outros descontos</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="vt" type="text" class="validate currency">
-          <label for="vt">Desconto do Vale Transporte</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="vr" type="text" class="validate currency">
-          <label for="vr">Desconto do Vale Refeição</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="va" type="text" class="validate currency">
-          <label for="va">Desconto do Vale Alimentação</label>
-        </div>
-      </div>
-
-      <div class="result row">
-        <div class="col s12">
-          <h5>Salário Líquido: <span id="liquid-wage">R$ 0,00</span></h5>
-          <p>INSS: <span id="discount-inss">R$ 0,00</span> | IR: <span id="discount-ir">R$ 0,00</span></p>
-        </div>
-      </div>
-			
-			<div class="row">
-        <div class="col s12">
-          <a id="save" class="green darken-1 white-text waves-effect waves-light btn right">Gravar<i class="material-icons right">done</i></a>
-        </div>
-			</div>
-
-		</form>
-  </div>
-
-  <div id="confirmacao" class="modal modal-fixed-footer">
-    <div class="modal-content">
-      <h5>Resumo do pedido</h5>
-      <input id="numero-mesa" type="number" class="validate" placeholder="Número da mesa">
-      <blockquote id="resumo"></blockquote>
-    </div>
-    <div class="modal-footer">
-      <button class="btn deep-orange waves-effect waves-light modal-close">
-        Pedir
-      </button>
-      <button class="btn-flat waves-effect waves-red modal-close acao-limpar">
-        Cancelar
-      </button>
     </div>
   </div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/jquery.price_format.2.0.min.js"></script>
-	<script src="js/materialize.min.js"></script>
-	<script src="js/app.js"></script>
+  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+    <a onclick="callLiquidSalary()" class="btn-floating btn-large waves-effect waves-light teal darken-1"><i class="large material-icons">add</i></a>
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery.price_format.2.0.min.js"></script>
+  <script src="js/materialize.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/register.js"></script>
 </body>
 </html>
