@@ -24,28 +24,35 @@
     </div>
 
     <ul class="tabs green darken-1">
-      <li class="tab col s6 active"><a class="white-text" href="#liquidsalary">Test 1</a></li>
-      <li class="tab col s6"><a class="white-text" href="#cltversuspj">Test 4</a></li>
+      <li class="tab col s6"><a class="white-text" href="#liquidsalary">Salário Líquido</a></li>
+      <li class="tab col s6"><a class="white-text" href="#cltversuspj">CLT vs PJ</a></li>
     </ul>
   </nav>
 
   <ul class="side-nav" id="mobile-demo">
     <li><a href="#" onclick="callIndex()"><i class="material-icons">payment</i>Salário Líquido</a></li>
     <li><a href="#" onclick="callRegisters()"><i class="material-icons">view_list</i>Registros</a></li>
-    <li><a href="#"><i class="material-icons">trending_up</i>CLT x PJ</a></li>
-    <li><a href="#"><i class="material-icons">settings</i>Configurações</a></li>
+    <li><a href="#" onclick="callCLTversusPJ()"><i class="material-icons">trending_up</i>CLT x PJ</a></li>
   </ul>
   
   <div class="row">
     <div class="col s12">
       <div id="liquidsalary" class="col s12">
-        <table class="striped">
+        <table class="responsive-table striped">
         <thead>
           <tr>
-              <th data-field="name">Name</th>
-              <th data-field="liquid-salary">Salário <br>Líquido</th>
+              <th data-field="name">Nome</th>
+              <th data-field="wage">Bruto</th>
+              <th data-field="liquid-salary">Líquido</th>
               <th data-field="inss">INSS</th>
               <th data-field="irrf">IRRF</th>
+              <th data-field="children">Dependentes</th>
+              <th data-field="pension">Pensão</th>
+              <th data-field="other-discounts">descontos</th>
+              <th data-field="vt">VT</th>
+              <th data-field="vr">VR</th>
+              <th data-field="va">VA</th>
+              <th data-field="date">Data</th>
           </tr>
         </thead>
 
@@ -57,7 +64,7 @@
       </div>
 
       <div id="cltversuspj" class="col s12">
-        <h1>CLT versus PJ</h1>
+        <h5>CLT x PJ em breve</h5>
       </div>
 
     </div>

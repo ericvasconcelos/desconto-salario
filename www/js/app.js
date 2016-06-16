@@ -192,9 +192,16 @@ $('#save').on('click', function() {
 
 	var newRegistro = {
 		name: $('#name').val(),
+		grossSalary: $('#wage').val(),
 		liquidSalary: $('#liquid-wage').text(),
 		inssDiscount: $('#discount-inss').text(),
 		irDiscount: $('#discount-ir').text(),
+		children: $('#children').val(),
+		pension: $('#pension').val(),
+		othersDiscounts: $('#others-discounts').val(),
+		vt: $('#vt').val(),
+		vr: $('#vr').val(),
+		va: $('#va').val(),
 		date: date
 	}
 
@@ -218,9 +225,17 @@ if (lista) {
 	lista.list.map(function(item) {
 		listaCompleta += '<tr>\
 			<td>' + item.name + '</td>\
+			<td>' + item.grossSalary + '</td>\
 	    <td>' + item.liquidSalary + '</td>\
 	    <td>' + item.inssDiscount + '</td>\
 	    <td>' + item.irDiscount + '</td>\
+	    <td>' + item.children + '</td>\
+	    <td>' + item.pension + '</td>\
+	    <td>' + item.othersDiscounts + '</td>\
+	    <td>' + item.vt + '</td>\
+	    <td>' + item.vr + '</td>\
+	    <td>' + item.va + '</td>\
+	    <td>' + item.date + '</td>\
 	  </tr>'
 	});
 }
@@ -235,6 +250,36 @@ $('.acao-limpar').on('click', function () {
 
 
 
+// Calculo do CLT
+// Salario Bruto
+	// INSS
+		// dependentes
+		// pensao
+		// outros descontos
+	// IR
+// FGTS
+// Benefícios
+	// Férias
+	// 13 salário
+	// Participação nos Lucros 
+	// VT - descontos
+	// VR - descontos
+	// VA - descontos
+	// Previdência privada
+	// Plano de saúde
+	// Educação
+	// Outros Benefícios
+
+
+
+// Calculo PJ
+	// IRPJ
+	// Cofins
+	// PIS
+	// ISS
+	// Simples / DAS
+	// GPS 11% sm + 2,0% fat
+	// Contador
 
 
 
@@ -243,11 +288,3 @@ $('.acao-limpar').on('click', function () {
 
 
 
-
-
-
-
-
-
-
-// $('#liquid-wage').val(finalValue);
