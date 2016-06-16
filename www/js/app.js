@@ -215,7 +215,7 @@ $('#save').on('click', function() {
 		storage.setItem('registros', JSON.stringify({"list": [newRegistro]}));
 	}
 
-	Materialize.toast('Salário gravado!', 3000) 
+	Materialize.toast('Salário gravado!', 3000, '', callRegisters); 
 });
 
 var lista = JSON.parse(storage.getItem('registros'));
@@ -243,8 +243,10 @@ if (lista) {
 $("#list").html(listaCompleta);
 
 $('.acao-limpar').on('click', function () {
-	$('#list').html('');
-	storage.removeItem('registros');
+	$('#list').fadeOut(300, function() {
+		$(this).html('');
+		storage.removeItem('registros');
+	});
 });
 
 

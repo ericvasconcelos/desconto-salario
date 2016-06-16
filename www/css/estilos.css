@@ -31,14 +31,22 @@ nav .nav-wrapper i {
     display: block;
     text-align: center;
 }
+.side-nav a {
+    padding: 0;
+}
 .side-nav i {
     width: 2rem;
-    font-size: 1.8rem;
-    line-height: 4.5rem;
+    font-size: 1.6rem;
+    line-height: 4.7rem;
     display: block;
     float: left;
     text-align: center;
     margin-right: 0.5em;
+}
+hr {
+    height: 1px;
+    background-color: #ddd;
+    border: none;
 }
 
 /* tabs */
