@@ -31,11 +31,8 @@ if (lista) {
 $("#list").html(listaCompleta);
 
 $('.acao-limpar').on('click', function () {
-	$('#list').fadeOut(300, function() {
-		$(this).html('');
+	$('#liquidsalary-table').fadeOut(300, function() {
 		storage.removeItem('registros');
-		$('#liquidsalary-table').fadeOut(200, function() {
-			$('#empty-data').fadeIn(300);
-		});
+		$('#empty-data').fadeIn(300);
 	});
 });
