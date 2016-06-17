@@ -20,8 +20,6 @@ $('.currency').priceFormat({
 	centsLimit: 2
 }).trigger('keyup');
 
-$('#name').focus();
-
 function currencyToNumber(number) {
 	return Number(number.replace('R$ ', '').replace('.', '').replace(',', '.'));
 }

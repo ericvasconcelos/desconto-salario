@@ -1,4 +1,10 @@
+.row {
+    overflow: hidden;
+}
 /* logo */
+nav {
+    height: auto;
+}
 nav .brand-logo {
    font-size: 1.3rem; 
 }
