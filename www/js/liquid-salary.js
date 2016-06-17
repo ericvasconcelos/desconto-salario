@@ -10,7 +10,8 @@ var inssDiscount = 0,
 	othersDiscounts = 0,
 	vtVal = 0,
 	vrVal = 0,
-	vaVal = 0;
+	vaVal = 0,
+	savedSalary;
 
 $('.currency').priceFormat({
 	prefix: 'R$ ',
@@ -169,7 +170,11 @@ $('.currency').on('keyup', function() {
 
 $('#save').on('click', function() {
 
-	if (validateInputs()) {
+	var nameVal = $('#name').val();
+
+	if (validateInputs() && savedSalary !== nameVal) {
+		savedSalary = nameVal;
+
 		var data = new Date();
 	  var dia = data.getDate();
 	  if (dia.toString().length == 1)
@@ -182,7 +187,7 @@ $('#save').on('click', function() {
 
 
 		var newRegistro = {
-			name: $('#name').val(),
+			name: nameVal,
 			grossSalary: $('#wage').val(),
 			liquidSalary: $('#liquid-wage').text(),
 			inssDiscount: $('#discount-inss').text(),
@@ -195,7 +200,6 @@ $('#save').on('click', function() {
 			va: $('#va').val(),
 			date: date
 		}
-
 		var registros = storage.getItem('registros');
 
 		if (registros) {
@@ -206,7 +210,7 @@ $('#save').on('click', function() {
 			storage.setItem('registros', JSON.stringify({"list": [newRegistro]}));
 		}
 
-		Materialize.toast('Salário gravado!', 3000, '', callIndex); 
+		Materialize.toast('Salário gravado!', 3000, '', callIndex);
 		
 	} else {
 		return false;

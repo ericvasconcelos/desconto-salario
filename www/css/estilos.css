@@ -1,6 +1,12 @@
 /* logo */
-nav .brand-logo {
-   font-size: 1.3rem; 
+nav .title-topo {
+    margin: 0 0 0 25px;
+    line-height: 56px;
+    font-size: 1.3rem;
+    color: #fff;
+    display: inline-block;  
+    padding: 0;
+    white-space: nowrap;
 }
 /* estilo do titulo */
 .titulo {
