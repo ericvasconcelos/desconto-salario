@@ -4,7 +4,7 @@ var lista = JSON.parse(storage.getItem('registros'));
 var listaCompleta = '';
 
 if (lista) {
-	$('#liquidsalary-table').show();
+	$('#liquidsalary').show();
 } else {
 	$('#empty-data').show();
 }

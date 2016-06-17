@@ -41,6 +41,11 @@ function numberToCurrency(currency) {
 }
 
 function calcINSS(grossSalary) {
+	var allDiscounts = childrenDiscount + pensionVal + othersDiscounts;
+	if (grossSalary < allDiscounts || grossSalary === undefined) {
+		return salaryAfterIR = 0.00;
+	}
+
 	if (grossSalary <= 1556.94) {
 		inssDiscount = (grossSalary * 0.08).toFixed(2);
 		baseSalary = grossSalary - inssDiscount;
@@ -64,7 +69,7 @@ function calcINSS(grossSalary) {
 function calcIR(baseSalary) {
 	// Descontos
 	salaryBeforeIR = baseSalary - (childrenDiscount + pensionVal + othersDiscounts);
-
+	
 	var band2 = 922.67,
 		band3 = 924.40,
 		band4 = 913.63;
