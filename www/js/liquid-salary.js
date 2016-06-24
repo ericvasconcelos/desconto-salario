@@ -1,4 +1,5 @@
 var inssDiscount = 0,
+	fgtsVal = 0,
 	childrenDiscount = 0,
 	grossSalary,
 	baseSalary,
@@ -11,6 +12,9 @@ var inssDiscount = 0,
 	vtVal = 0,
 	vrVal = 0,
 	vaVal = 0,
+	healthcareVal = 0,
+	unionDuesVal = 0,
+	salaryDiscountsVal = 0,
 	savedSalary;
 
 $('.currency').priceFormat({
@@ -39,6 +43,11 @@ function numberToCurrency(currency) {
 	}
 
 	return 'R$ ' + real + ',' + cents;
+}
+
+function calcFGTS(grossSalary) {
+	fgtsVal = grossSalary * 0.08;
+	return fgtsVal;
 }
 
 function calcINSS(grossSalary) {
@@ -101,19 +110,20 @@ function calcIR(baseSalary) {
 }
 
 function minusOthersDiscounts(salaryAfterIR) {
-	finalSalary = (salaryAfterIR - (vtVal + vrVal + vaVal)).toFixed(2);
+	finalSalary = (salaryAfterIR - (vtVal + vrVal + vaVal + healthcareVal + unionDuesVal + salaryDiscountsVal)).toFixed(2);
 	return finalSalary;
 }
 
 function calcFinalSalary() {
+	calcFGTS(grossSalary);
 	calcINSS(grossSalary);
 	minusOthersDiscounts(salaryAfterIR);
 
 	$('#liquid-wage').text(numberToCurrency(finalSalary));
 	$('#discount-inss').text(numberToCurrency(inssDiscount));
 	$('#discount-ir').text(numberToCurrency(irDiscount));
+	$('#discount-fgts').text(numberToCurrency(fgtsVal));
 }
-
 
 function validateInputs() {
 	if ($('#name').val().length < 3) {
@@ -164,6 +174,21 @@ $('#va').on('keyup', function() {
 	vaVal = currencyToNumber($(this).val());
 });
 
+// Plano de Saúde
+$('#healthcare').on('keyup', function() {
+	healthcareVal = currencyToNumber($(this).val());
+});
+
+// Contribuição sindical
+$('#union-dues').on('keyup', function() {
+	unionDuesVal = currencyToNumber($(this).val());
+});
+
+// Outros descontos do salário
+$('#salary-discounts').on('keyup', function() {
+	salaryDiscountsVal = currencyToNumber($(this).val());
+});
+
 $('.currency').on('keyup', function() {
 	calcFinalSalary();
 });
@@ -190,6 +215,7 @@ $('#save').on('click', function() {
 			name: nameVal,
 			grossSalary: $('#wage').val(),
 			liquidSalary: $('#liquid-wage').text(),
+			fgtsDiscount: $('#discount-fgts').text(),
 			inssDiscount: $('#discount-inss').text(),
 			irDiscount: $('#discount-ir').text(),
 			children: $('#children').val(),
@@ -198,6 +224,9 @@ $('#save').on('click', function() {
 			vt: $('#vt').val(),
 			vr: $('#vr').val(),
 			va: $('#va').val(),
+			healthcareVal: $('#healthcare').val(),
+			unionDuesVal: $('#union-dues').val(),
+			salaryDiscountsVal: $('#salary-discounts').val(),
 			date: date
 		}
 		var registros = storage.getItem('registros');

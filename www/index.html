@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, width=device-width, target-densitydpi=device-dpi" />
   <meta charset="utf-8">
   <title>Desconto Salário</title>
   <link rel="stylesheet" href="icons/material.css">
   <link rel="stylesheet" href="css/materialize.min.css">
   <link rel="stylesheet" href="css/estilos.css">
+  <script type="text/javascript" charset="utf-8">
+    document.addEventListener("deviceready", onDeviceReady, false);
+    function onDeviceReady() {
+      navigator.splashscreen.show();
+    }
+  </script>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9735122012959131",
+      enable_page_level_ads: true
+    });
+  </script>
 </head>
 <body>
 
   <ul class="side-nav" id="mobile-demo">
-    <li><a href="#" onclick="callIndex()"><i class="material-icons">view_list</i>Registros</a></li>
-    <li><a href="#" onclick="callLiquidSalary()"><i class="material-icons">payment</i>Salário Líquido</a></li>
+    <li><a href="index.html" class="link_vignette"><i class="material-icons">list</i>Registros</a></li>
+    <li><a href="liquid-salary.html" class="link_vignette"><i class="material-icons">payment</i>Salário Líquido</a></li>
     <hr>
-    <li><a href="#" onclick="callAbout()"><i class="material-icons">info_outline</i>Sobre o App</a></li>
+    <li><a href="about.html" class="link_vignette"><i class="material-icons">info_outline</i>Sobre o App</a></li>
   </ul>
 
   <nav class="row teal darken-1 white-text">
@@ -40,14 +54,18 @@
               <th data-field="name">Nome</th>
               <th data-field="wage">Bruto</th>
               <th data-field="liquid-salary">Líquido</th>
+              <th data-field="fgts">FGTS</th>
               <th data-field="inss">INSS</th>
               <th data-field="irrf">IRRF</th>
               <th data-field="children">Dependentes</th>
               <th data-field="pension">Pensão</th>
-              <th data-field="other-discounts">descontos</th>
+              <th data-field="other-discounts">descontos IR</th>
               <th data-field="vt">VT</th>
               <th data-field="vr">VR</th>
               <th data-field="va">VA</th>
+              <th data-field="healthcareVal">Plano de Saúde</th>
+              <th data-field="unionDuesVal">Sindicato</th>
+              <th data-field="salaryDiscountsVal">Outros Descontos</th>
               <th data-field="date">Data</th>
             </tr>
           </thead>
@@ -61,9 +79,11 @@
       <div id="empty-data" class="liquidsalary-item">
         <div class="liquidsalary-item-valign col s10 offset-s1 valign-wrapper">
           <div class="valign center-align center">
-            <i class="material-icons large teal-text text-darken-1">trending_up</i>
-            <h5>Calcule os descontos do seu salário agora</h5>
-            <p>Aperte o botão <i class="btn-more material-icons tiny">add</i> abaixo e comece!</p>
+            <a href="liquid-salary.html" class="link_vignette">
+              <i class="material-icons large teal-text text-darken-1">payment</i>
+              <h5>Calcule os descontos do seu salário agora</h5>
+              <p>Aperte o botão <i class="btn-more material-icons tiny">add</i> abaixo e comece!</p>
+            </a>
           </div>
         </div>
       </div>
@@ -72,7 +92,7 @@
   </div>
 
   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-    <a onclick="callLiquidSalary()" class="btn-floating btn-large waves-effect waves-light teal darken-1"><i class="large material-icons">add</i></a>
+    <a href="liquid-salary.html" class="btn-floating btn-large waves-effect waves-light teal darken-1 link_vignette"><i class="large material-icons">add</i></a>
   </div>
 
   <script src="js/jquery.min.js"></script>

@@ -55,6 +55,11 @@ hr {
     border: none;
 }
 
+.obs {
+    font-size: 0.8em;
+    color: #9e9e9e;
+}
+
 /* tabs */
 .tabs {
     clear: both;
@@ -81,4 +86,6 @@ hr {
     color: white;
 }
 
-
+.link_vignette {
+    color: inherit;
+}

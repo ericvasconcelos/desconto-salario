@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, width=device-width, target-densitydpi=device-dpi" />
 	<meta charset="utf-8">
 	<title>Salário Líquido</title>
 	<link rel="stylesheet" href="icons/material.css">
 	<link rel="stylesheet" href="css/materialize.min.css">
 	<link rel="stylesheet" href="css/estilos.css">
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9735122012959131",
+      enable_page_level_ads: true
+    });
+  </script>
 </head>
 <body>
 
   <ul class="side-nav" id="mobile-demo">
-    <li><a href="#" onclick="callIndex()"><i class="material-icons">view_list</i>Registros</a></li>
-    <li><a href="#" onclick="callLiquidSalary()"><i class="material-icons">payment</i>Salário Líquido</a></li>
+    <li><a href="index.html" class="link_vignette"><i class="material-icons">list</i>Registros</a></li>
+    <li><a href="liquid-salary.html" class="link_vignette"><i class="material-icons">payment</i>Salário Líquido</a></li>
     <hr>
-    <li><a href="#" onclick="callAbout()"><i class="material-icons">info_outline</i>Sobre o App</a></li>
+    <li><a href="about.html" class="link_vignette"><i class="material-icons">info_outline</i>Sobre o App</a></li>
   </ul>
 
 	<nav class="row teal darken-1 white-text">
@@ -72,7 +79,16 @@
       <div class="row">
         <div class="input-field col s12">
           <input id="others-discounts" type="tel" pattern="^(\D{2}\s)([0-9]{1,3}\.)?[0-9]{1,3},[0-9]{2}$" class="validate currency">
-          <label for="others-discounts">Outros descontos</label>
+          <label for="others-discounts">Outros descontos de IR</label>
+        </div>
+        <div class="col s12">
+          <p class="obs">Descontos que abatem do IR: Pensão alimentícia, Previdência Privada, Funpresp, FAPI e Parcela isenta de aposentadoria, reserva remunerada, reforma e pensão para declarante com 65 anos ou mais, caso não tenha sido deduzida dos rendimentos tributáveis. Carne-Leão: Livro Caixa.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <hr>
         </div>
       </div>
 
@@ -97,10 +113,40 @@
         </div>
       </div>
 
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="healthcare" type="tel" pattern="^(\D{2}\s)([0-9]{1,3}\.)?[0-9]{1,3},[0-9]{2}$" class="validate currency">
+          <label for="healthcare">Desconto do Plano de Saúde</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="union-dues" type="tel" pattern="^(\D{2}\s)([0-9]{1,3}\.)?[0-9]{1,3},[0-9]{2}$" class="validate currency">
+          <label for="union-dues">Contribuição Sindical</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="salary-discounts" type="tel" pattern="^(\D{2}\s)([0-9]{1,3}\.)?[0-9]{1,3},[0-9]{2}$" class="validate currency">
+          <label for="salary-discounts">Outros descontos no Salário</label>
+        </div>
+        <div class="col s12">
+          <p class="obs">Previdência Privada, Seguro de vida, Gasolina, Pensão alimentícia e outros descontos não mencionados anteriormente.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <hr>
+        </div>
+      </div>
+
       <div class="result row">
         <div class="col s12">
           <h5>Salário Líquido: <span id="liquid-wage">R$ 0,00</span></h5>
-          <p>INSS: <span id="discount-inss">R$ 0,00</span> | IR: <span id="discount-ir">R$ 0,00</span></p>
+          <p>INSS: <span id="discount-inss">R$ 0,00</span> | IR: <span id="discount-ir">R$ 0,00</span> | FGTS: <span id="discount-fgts">R$ 0,00</span></p>
         </div>
       </div>
 			

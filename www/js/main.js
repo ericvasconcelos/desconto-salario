@@ -23,3 +23,7 @@ function callSettings() {
 function callAbout() {
 	window.location = 'about.html';
 }
+
+$('.link_vignette').on('click', function() {
+	window.location = $(this).attr('href');
+});

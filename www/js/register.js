@@ -15,6 +15,7 @@ if (lista) {
 			<td>' + item.name + '</td>\
 			<td>' + item.grossSalary + '</td>\
 	    <td>' + item.liquidSalary + '</td>\
+	    <td>' + item.fgtsDiscount + '</td>\
 	    <td>' + item.inssDiscount + '</td>\
 	    <td>' + item.irDiscount + '</td>\
 	    <td>' + item.children + '</td>\
@@ -23,6 +24,9 @@ if (lista) {
 	    <td>' + item.vt + '</td>\
 	    <td>' + item.vr + '</td>\
 	    <td>' + item.va + '</td>\
+	    <td>' + item.healthcareVal + '</td>\
+	    <td>' + item.unionDuesVal + '</td>\
+	    <td>' + item.salaryDiscountsVal + '</td>\
 	    <td>' + item.date + '</td>\
 	  </tr>'
 	});
